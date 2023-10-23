@@ -76,4 +76,28 @@ return function (App $app) {
 
         return $response->withHeader("Content-Type", "application/json");
     });
+
+    $app->get('/tb_pelanggan/{id}', function (Request $request, Response $response, $args) {
+        $db = $this->get(PDO::class);
+
+        $query = $db->prepare('CALL ReadPelangganByID(:id_pelanggan)');
+        $query->bindParam(':id_pelanggan', $args['id'], PDO::PARAM_INT);
+        $query->execute();
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        $response->getBody()->write(json_encode($results[0]));
+
+        return $response->withHeader("Content-Type", "application/json");
+    });
+
+    $app->get('/tb_transaksi/{id}', function (Request $request, Response $response, $args) {
+        $db = $this->get(PDO::class);
+
+        $query = $db->prepare('CALL ReadTransaksiByID(:id_transaksi)');
+        $query->bindParam(':id_transaksi', $args['id'], PDO::PARAM_INT);
+        $query->execute();
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        $response->getBody()->write(json_encode($results[0]));
+
+        return $response->withHeader("Content-Type", "application/json");
+    });
 };
