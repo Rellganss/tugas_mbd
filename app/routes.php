@@ -12,7 +12,7 @@ use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 return function (App $app) {
 
     // get
-    $app->get('/tb_mobil', function (Request $request, Response $response) {
+    $app->get('/mobil', function (Request $request, Response $response) {
         $db = $this->get(PDO::class);
 
         $query = $db->query('CALL ReadMobil()');
@@ -22,7 +22,7 @@ return function (App $app) {
         return $response->withHeader("Content-Type", "application/json");
     });
 
-    $app->get('/tb_pegawai', function (Request $request, Response $response) {
+    $app->get('/pegawai', function (Request $request, Response $response) {
         $db = $this->get(PDO::class);
 
         $query = $db->query('CALL ReadPegawai()');
@@ -32,7 +32,7 @@ return function (App $app) {
         return $response->withHeader("Content-Type", "application/json");
     });
 
-    $app->get('/tb_pelanggan', function (Request $request, Response $response) {
+    $app->get('/pelanggan', function (Request $request, Response $response) {
         $db = $this->get(PDO::class);
 
         $query = $db->query('CALL ReadPelanggan()');
@@ -42,7 +42,7 @@ return function (App $app) {
         return $response->withHeader("Content-Type", "application/json");
     });
 
-    $app->get('/tb_transaksi', function (Request $request, Response $response) {
+    $app->get('/transaksi', function (Request $request, Response $response) {
         $db = $this->get(PDO::class);
 
         $query = $db->query('CALL ReadTransaksi()');
@@ -53,7 +53,7 @@ return function (App $app) {
     });
 
     // get by id
-    $app->get('/tb_mobil/{id}', function (Request $request, Response $response, $args) {
+    $app->get('/mobil/{id}', function (Request $request, Response $response, $args) {
         $db = $this->get(PDO::class);
 
         $query = $db->prepare('CALL ReadMobilByID(:id_mobil)');
@@ -65,7 +65,7 @@ return function (App $app) {
         return $response->withHeader("Content-Type", "application/json");
     });
 
-    $app->get('/tb_pegawai/{id}', function (Request $request, Response $response, $args) {
+    $app->get('/pegawai/{id}', function (Request $request, Response $response, $args) {
         $db = $this->get(PDO::class);
 
         $query = $db->prepare('CALL ReadPegawaiByID(:id_pegawai)');
@@ -77,7 +77,7 @@ return function (App $app) {
         return $response->withHeader("Content-Type", "application/json");
     });
 
-    $app->get('/tb_pelanggan/{id}', function (Request $request, Response $response, $args) {
+    $app->get('/pelanggan/{id}', function (Request $request, Response $response, $args) {
         $db = $this->get(PDO::class);
 
         $query = $db->prepare('CALL ReadPelangganByID(:id_pelanggan)');
@@ -89,7 +89,7 @@ return function (App $app) {
         return $response->withHeader("Content-Type", "application/json");
     });
 
-    $app->get('/tb_transaksi/{id}', function (Request $request, Response $response, $args) {
+    $app->get('/transaksi/{id}', function (Request $request, Response $response, $args) {
         $db = $this->get(PDO::class);
 
         $query = $db->prepare('CALL ReadTransaksiByID(:id_transaksi)');
@@ -195,7 +195,7 @@ return function (App $app) {
     });    
 
     // update
-    $app->put('/update_mobil/{id}', function (Request $request, Response $response, $args) {
+    $app->put('/mobil/{id}', function (Request $request, Response $response, $args) {
         $data = $request->getParsedBody(); // Ambil data yang dikirim dalam body PUT request
     
         $id = $args['id']; // Ambil ID mobil dari parameter URL
@@ -219,7 +219,7 @@ return function (App $app) {
         return $response;
     });
     
-    $app->put('/update_pegawai/{id}', function (Request $request, Response $response, $args) {
+    $app->put('/pegawai/{id}', function (Request $request, Response $response, $args) {
         $data = $request->getParsedBody(); // Ambil data yang dikirim dalam body PUT request
     
         $id = $args['id']; // Ambil ID pegawai dari parameter URL
@@ -243,7 +243,7 @@ return function (App $app) {
         return $response;
     });
     
-    $app->put('/update_pelanggan/{id}', function (Request $request, Response $response, $args) {
+    $app->put('/pelanggan/{id}', function (Request $request, Response $response, $args) {
         $data = $request->getParsedBody(); // Ambil data yang dikirim dalam body PUT request
     
         $id = $args['id']; // Ambil ID pelanggan dari parameter URL
@@ -267,7 +267,7 @@ return function (App $app) {
         return $response;
     });
     
-    $app->put('/update_transaksi/{id}', function (Request $request, Response $response, $args) {
+    $app->put('/transaksi/{id}', function (Request $request, Response $response, $args) {
         $data = $request->getParsedBody(); // Ambil data yang dikirim dalam body PUT request
     
         $id_transaksi = $args['id']; // Ambil ID transaksi dari parameter URL
@@ -299,7 +299,7 @@ return function (App $app) {
     
 
     // delete
-    $app->delete('/delete_mobil/{id}', function (Request $request, Response $response, $args) {
+    $app->delete('/mobil/{id}', function (Request $request, Response $response, $args) {
         $id = $args['id']; // Ambil ID mobil dari parameter URL
     
         $db = $this->get(PDO::class);
@@ -315,7 +315,7 @@ return function (App $app) {
         return $response;
     });
 
-    $app->delete('/delete_pegawai/{id}', function (Request $request, Response $response, $args) {
+    $app->delete('/pegawai/{id}', function (Request $request, Response $response, $args) {
         $id = $args['id']; // Ambil ID pegawai dari parameter URL
     
         $db = $this->get(PDO::class);
@@ -331,7 +331,7 @@ return function (App $app) {
         return $response;
     });
 
-    $app->delete('/delete_pelanggan/{id}', function (Request $request, Response $response, $args) {
+    $app->delete('/pelanggan/{id}', function (Request $request, Response $response, $args) {
         $id = $args['id']; // Ambil ID pelanggan dari parameter URL
     
         $db = $this->get(PDO::class);
@@ -347,7 +347,7 @@ return function (App $app) {
         return $response;
     });
 
-    $app->delete('/delete_transaksi/{id}', function (Request $request, Response $response, $args) {
+    $app->delete('/transaksi/{id}', function (Request $request, Response $response, $args) {
         $id = $args['id']; // Ambil ID transaksi dari parameter URL
     
         $db = $this->get(PDO::class);
