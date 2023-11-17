@@ -102,7 +102,7 @@ return function (App $app) {
     });
 
     // post
-    $app->post('/create_mobil', function (Request $request, Response $response) {
+    $app->post('/mobil', function (Request $request, Response $response) {
         $data = $request->getParsedBody(); // Ambil data yang dikirim dalam body POST request
     
         $merk = $data['merk'];
@@ -124,7 +124,7 @@ return function (App $app) {
         return $response;
     });
 
-    $app->post('/create_pegawai', function (Request $request, Response $response) {
+    $app->post('/pegawai', function (Request $request, Response $response) {
         $data = $request->getParsedBody(); // Ambil data yang dikirim dalam body POST request
     
         $nama_pegawai = $data['nama_pegawai'];
@@ -146,7 +146,7 @@ return function (App $app) {
         return $response;
     });
 
-    $app->post('/create_pelanggan', function (Request $request, Response $response) {
+    $app->post('/pelanggan', function (Request $request, Response $response) {
         $data = $request->getParsedBody(); // Ambil data yang dikirim dalam body POST request
     
         $nama_pelanggan = $data['nama_pelanggan'];
@@ -168,7 +168,7 @@ return function (App $app) {
         return $response;
     });
 
-    $app->post('/create_transaksi', function (Request $request, Response $response) {
+    $app->post('/transaksi', function (Request $request, Response $response) {
         $data = $request->getParsedBody(); // Ambil data yang dikirim dalam body POST request
     
         $id_mobil = $data['id_mobil'];
