@@ -51,6 +51,17 @@ return function (App $app) {
 
         return $response->withHeader("Content-Type", "application/json");
     });
+    
+    # Get Transaksi Full
+    $app->get('/transaksi/full', function (Request $request, Response $response) {
+        $db = $this->get(PDO::class);
+
+        $query = $db->query('CALL ReadTransaksiFull()');
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        $response->getBody()->write(json_encode($results));
+
+        return $response->withHeader("Content-Type", "application/json");
+    });
 
     // get by id
     $app->get('/mobil/{id}', function (Request $request, Response $response, $args) {
